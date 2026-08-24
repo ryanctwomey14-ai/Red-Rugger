@@ -772,6 +772,8 @@ body.is-locked { overflow: hidden; }
    16. Forms
    -------------------------------------------------------------------------- */
 .form { display: grid; gap: var(--s-5); }
+/* Netlify spam honeypot — hidden from people, still present for bots. */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; margin: 0; }
 .form__row { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--s-5); }
 @media (max-width: 680px) { .form__row { grid-template-columns: 1fr; } }
 .field { display: grid; gap: var(--s-2); }

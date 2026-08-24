@@ -189,7 +189,11 @@ document.documentElement.classList.add('js');})();
       <div data-reveal>
         <div class="form-panel">
           <h2 class="h3 mb-5">Send a message</h2>
-          <form class="form" data-form data-phone="917-682-3642" novalidate>
+          <form class="form" data-form data-phone="917-682-3642" novalidate
+            name="contact" method="POST"
+            data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact">
+            <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
             <div class="field">
               <label for="c-reason">What's this about? <span class="req" aria-hidden="true">*</span></label>
               <select id="c-reason" name="reason" required>

@@ -302,29 +302,46 @@
         var label = button ? button.textContent : '';
         if (button) { button.disabled = true; button.textContent = 'Sending…'; }
 
-        var endpoint = form.getAttribute('data-endpoint');
-        var done = function (ok) {
+        var fail = function () {
           if (button) { button.disabled = false; button.textContent = label; }
           if (!status) return;
           status.classList.add('is-shown');
-          status.setAttribute('data-state', ok ? 'ok' : 'error');
-          status.textContent = ok
-            ? 'Thank you — your request is in. A principal will reply within one business day.'
-            : 'That did not send. Please call ' + (form.getAttribute('data-phone') || '475-299-8238') + ' and we will take the details directly.';
-          if (ok) form.reset();
+          status.setAttribute('data-state', 'error');
+          status.textContent = 'That did not send. Please call '
+            + (form.getAttribute('data-phone') || '917-682-3642')
+            + ' and we will take the details directly.';
           status.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
         };
 
-        if (!endpoint) {
-          // No handler wired yet — see README, "Connecting the forms".
-          window.setTimeout(function () { done(true); }, 600);
+        // A completed submission lands on the thank-you page. That gives
+        // analytics a single conversion URL to fire on, and it reads as more
+        // final than an inline message.
+        var succeed = function () { window.location.href = 'thank-you.html'; };
+
+        var endpoint = form.getAttribute('data-endpoint');
+
+        // Netlify Forms: post the encoded fields back to the page's own path.
+        // The hidden form-name field is what routes it to the right form.
+        if (!endpoint && form.hasAttribute('data-netlify')) {
+          fetch(window.location.pathname, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(new FormData(form)).toString()
+          }).then(function (r) { r.ok ? succeed() : fail(); }).catch(fail);
           return;
         }
+
+        if (!endpoint) {
+          // Nothing wired — see README, "Connecting the forms".
+          window.setTimeout(succeed, 500);
+          return;
+        }
+
         fetch(endpoint, {
           method: 'POST',
           headers: { 'Accept': 'application/json' },
           body: new FormData(form)
-        }).then(function (r) { done(r.ok); }).catch(function () { done(false); });
+        }).then(function (r) { r.ok ? succeed() : fail(); }).catch(fail);
       });
     });
   })();

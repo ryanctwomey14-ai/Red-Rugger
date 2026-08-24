@@ -151,6 +151,14 @@ function build() {
   ].join('\n') + '\n';
   fs.writeFileSync(path.join(DIST, '.htaccess'), htaccess, 'utf8');
 
+  // Replace any service worker the previous site registered with one that
+  // deletes its caches and unregisters itself. Covers the paths the common
+  // WordPress caching plugins use.
+  const swKill = read(path.join(SRC, 'sw-kill.js'));
+  ['sw.js', 'service-worker.js', 'sw-cache.js', 'OneSignalSDKWorker.js'].forEach((name) => {
+    fs.writeFileSync(path.join(DIST, name), swKill, 'utf8');
+  });
+
   fs.writeFileSync(
     path.join(DIST, 'robots.txt'),
     `User-agent: *\nAllow: /\n\nSitemap: ${SITE.url}/sitemap.xml\n`,

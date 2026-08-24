@@ -75,7 +75,7 @@ def tracked(draw, centre_x, y, text, font, fill, tracking):
 
 
 d.line([(W / 2 - 160, 516), (W / 2 + 160, 516)], fill=IRON, width=1)
-tracked(d, W / 2, 546, "MULTIFAMILY  ·  LENDING  ·  BOYNTON BEACH, FL",
+tracked(d, W / 2, 546, "MULTIFAMILY  ·  LENDING  ·  EMERGING U.S. MARKETS",
         sans, SLATE, tracking=3.4)
 
 os.makedirs(OUT, exist_ok=True)

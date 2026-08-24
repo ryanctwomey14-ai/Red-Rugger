@@ -24,10 +24,9 @@ const DIST = path.join(__dirname, 'dist');
 const SITE = {
   name: 'Red Rugger LLC',
   url: 'https://www.redruggerllc.com',
-  phone: '475-299-8238',
-  phoneHref: 'tel:+14752998238',
-  email: 'info@redruggerllc.com',
-  city: 'Boynton Beach, FL 33436',
+  phone: '917-682-3642',
+  phoneHref: 'tel:+19176823642',
+  email: 'redrugger1949@gmail.com',
   year: new Date().getFullYear(),
 };
 

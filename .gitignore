@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+.idea/
+.vscode/
+
+# Local env / secrets — never commit form endpoints or analytics keys
+.env
+.env.*
+!.env.example
+
+# Local logs
+*.log
+npm-debug.log*
+
+# Scratch
+tmp/
+scratch/

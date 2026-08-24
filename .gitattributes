@@ -1,0 +1,16 @@
+# Normalize line endings so the repo is identical on Windows, macOS and CI.
+* text=auto eol=lf
+
+# Binary assets — never touch these.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.mp4  binary
+*.mov  binary
+*.woff  binary
+*.woff2 binary
+
+# Built output: keep it out of diffs so pull requests stay readable.
+# It is still committed, because the preview deploy and any static host need it.
+dist/** linguist-generated=true

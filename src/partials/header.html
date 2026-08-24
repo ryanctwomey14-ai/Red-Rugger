@@ -1,0 +1,78 @@
+<header class="masthead" data-masthead>
+  <div class="masthead__inner">
+    <a class="brand" href="index.html" aria-label="Red Rugger LLC — home">
+      <img src="assets/img/red-rugger-logo.webp" alt="" width="40" height="40" class="brand__mark brand__mark--dark">
+      <img src="assets/img/logo-mark-light.svg" alt="" width="40" height="40" class="brand__mark brand__mark--light">
+      <span class="brand__type">
+        <span class="brand__name">Red Rugger</span>
+        <span class="brand__meta">Real Estate Investment</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <ul class="nav__list">
+        <li class="nav__item--has-menu" data-dropdown>
+          <button class="nav__link nav__trigger" type="button" data-nav="invest" data-dropdown-trigger aria-expanded="false" aria-controls="menu-partner">
+            Partner With Us
+            <svg class="nav__chev" viewBox="0 0 10 6" aria-hidden="true" focusable="false"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <div class="dropdown dropdown--wide" id="menu-partner" data-dropdown-panel hidden>
+            <p class="dropdown__label">Ways to put capital to work</p>
+            <a class="dropdown__item" href="multifamily.html">
+              <span class="dropdown__title">Multifamily Investing</span>
+              <span class="dropdown__note">Passive ownership in apartment property we acquire and operate</span>
+            </a>
+            <a class="dropdown__item" href="lending.html">
+              <span class="dropdown__title">Private Lending</span>
+              <span class="dropdown__note">Be the lender &mdash; secured by the property, at an agreed rate</span>
+            </a>
+            <a class="dropdown__item" href="fix-flip-buy-hold.html">
+              <span class="dropdown__title">Fix &amp; Flip / Buy &amp; Hold</span>
+              <span class="dropdown__note">Back a project, or build a rental portfolio you own outright</span>
+            </a>
+            <a class="dropdown__foot" href="invest.html">
+              Compare your options <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </li>
+
+
+        <li><a class="nav__link" data-nav="sell" href="sell.html">Sell Your House</a></li>
+        <li><a class="nav__link" data-nav="about" href="about.html">About</a></li>
+        <li><a class="nav__link" data-nav="contact" href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="masthead__actions">
+      <a class="phone-link" href="{{phoneHref}}">
+        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 2h3l1.5 3.5L6 7a9 9 0 0 0 3 3l1.5-1.5L14 10v3a1 1 0 0 1-1 1A11 11 0 0 1 2 3a1 1 0 0 1 1-1z"/></svg>
+        <span>{{phone}}</span>
+      </a>
+      <a class="btn btn--primary btn--sm" href="invest.html">Partner with us</a>
+      <button class="burger" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="masthead__progress" data-progress aria-hidden="true"></div>
+</header>
+
+<div class="drawer" id="mobile-menu" data-menu hidden>
+  <nav class="drawer__nav" aria-label="Mobile">
+    <p class="drawer__group">Partner with us</p>
+    <a class="drawer__link" href="invest.html"><span class="drawer__num">01</span>Overview</a>
+    <a class="drawer__link" href="multifamily.html"><span class="drawer__num">02</span>Multifamily Investing</a>
+    <a class="drawer__link" href="lending.html"><span class="drawer__num">03</span>Private Lending</a>
+    <a class="drawer__link" href="fix-flip-buy-hold.html"><span class="drawer__num">04</span>Fix &amp; Flip / Buy &amp; Hold</a>
+
+    <p class="drawer__group">Company</p>
+    <a class="drawer__link" href="sell.html"><span class="drawer__num">05</span>Sell Your House</a>
+    <a class="drawer__link" href="about.html"><span class="drawer__num">06</span>About</a>
+    <a class="drawer__link" href="faq.html"><span class="drawer__num">07</span>FAQ</a>
+    <a class="drawer__link" href="contact.html"><span class="drawer__num">08</span>Contact</a>
+  </nav>
+  <div class="drawer__foot">
+    <a class="btn btn--primary btn--block" href="invest.html">Partner with us</a>
+    <a class="drawer__phone" href="{{phoneHref}}">{{phone}}</a>
+  </div>
+</div>

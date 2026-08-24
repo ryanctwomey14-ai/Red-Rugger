@@ -1,0 +1,65 @@
+name: Build and deploy preview
+
+# Publishes dist/ to GitHub Pages so the site can be reviewed at a real URL.
+#
+# The preview is deliberately blocked from search engines: this build contains
+# draft legal pages and target return figures that have not been through legal
+# review, and it must never be indexed under the client's name or compete with
+# redruggerllc.com. The noindex is applied to the deployed copy only — the
+# committed dist/ stays production-ready.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build the site
+        run: node build.js
+
+      - name: Verify the build
+        run: node tools/audit.js
+
+      - name: Block search engines on the preview
+        run: |
+          # Replace the production robots.txt with a full disallow.
+          printf 'User-agent: *\nDisallow: /\n' > dist/robots.txt
+          rm -f dist/sitemap.xml
+          # Add a noindex meta tag to every page.
+          for f in dist/*.html; do
+            perl -0pi -e 's|<meta charset="utf-8">|<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">|' "$f"
+          done
+          # Pages is not a Jekyll site.
+          touch dist/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

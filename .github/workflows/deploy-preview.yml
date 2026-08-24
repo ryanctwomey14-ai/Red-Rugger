@@ -47,6 +47,12 @@ jobs:
           for f in dist/*.html; do
             perl -0pi -e 's|<meta charset="utf-8">|<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">|' "$f"
           done
+          # Point the social card at the preview origin. og:image and og:url are
+          # absolute by spec and production points at redruggerllc.com, where the
+          # image does not exist yet — so a shared preview link would render a
+          # blank card. rel=canonical is deliberately left on production.
+          PREVIEW="https://ryanctwomey14-ai.github.io/Red-Rugger"             perl -pi -e 's{(<meta (?:property|name)="(?:og:url|og:image|twitter:image)" content=")https://www\.redruggerllc\.com}{$1$ENV{PREVIEW}}g' dist/*.html
+
           # Pages is not a Jekyll site.
           touch dist/.nojekyll
 

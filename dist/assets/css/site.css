@@ -490,12 +490,13 @@ body.is-locked { overflow: hidden; }
   content: ''; position: absolute; inset: 0;
   background:
     /* Top band: the masthead floats transparent over this image, so the nav
-       needs a guaranteed dark ground regardless of how bright the sky is. */
-    linear-gradient(to bottom, rgba(11,11,12,.86) 0%, rgba(11,11,12,.52) 13%, rgba(11,11,12,0) 30%),
-    /* Copy side, weighted left. */
-    linear-gradient(100deg, rgba(11,11,12,.95) 0%, rgba(11,11,12,.89) 32%, rgba(11,11,12,.64) 62%, rgba(11,11,12,.42) 100%),
+       needs a dark ground regardless of how bright the sky is. */
+    linear-gradient(to bottom, rgba(11,11,12,.62) 0%, rgba(11,11,12,.30) 14%, rgba(11,11,12,0) 30%),
+    /* Copy side, weighted left. Kept only as heavy as the text needs, so the
+       photograph reads clearly from the middle of the frame rightward. */
+    linear-gradient(100deg, rgba(11,11,12,.82) 0%, rgba(11,11,12,.68) 34%, rgba(11,11,12,.30) 64%, rgba(11,11,12,.08) 100%),
     /* Lifts the bottom edge off the fold. */
-    linear-gradient(to top, rgba(11,11,12,.80) 0%, rgba(11,11,12,0) 44%);
+    linear-gradient(to top, rgba(11,11,12,.55) 0%, rgba(11,11,12,0) 40%);
 }
 
 .hero--media .eyebrow { color: #C9C4BA; }
@@ -525,7 +526,7 @@ body.is-locked { overflow: hidden; }
   .hero__media img, .hero__media video { object-position: 68% 50%; }
   /* Vertical scrim on narrow screens — the copy sits under the image, not beside it. */
   .hero__media::after {
-    background: linear-gradient(to bottom, rgba(11,11,12,.88) 0%, rgba(11,11,12,.62) 16%, rgba(11,11,12,.80) 46%, rgba(11,11,12,.95) 100%);
+    background: linear-gradient(to bottom, rgba(11,11,12,.80) 0%, rgba(11,11,12,.60) 22%, rgba(11,11,12,.66) 48%, rgba(11,11,12,.86) 100%);
   }
 }
 

@@ -308,7 +308,7 @@
           status.classList.add('is-shown');
           status.setAttribute('data-state', 'error');
           status.textContent = 'That did not send. Please call '
-            + (form.getAttribute('data-phone') || '917-682-3642')
+            + (form.getAttribute('data-phone') || '917-682-3643')
             + ' and we will take the details directly.';
           status.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
         };

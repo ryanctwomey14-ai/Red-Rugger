@@ -24,8 +24,8 @@ const DIST = path.join(__dirname, 'dist');
 const SITE = {
   name: 'Red Rugger LLC',
   url: 'https://www.redruggerllc.com',
-  phone: '917-682-3642',
-  phoneHref: 'tel:+19176823642',
+  phone: '917-682-3643',
+  phoneHref: 'tel:+19176823643',
   email: 'redrugger1949@gmail.com',
   year: new Date().getFullYear(),
 };
